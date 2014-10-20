@@ -1,0 +1,45 @@
+* { margin: 0; padding: 0; }
+img { border: 0; }
+
+#include-div { padding: 10px 10px; overflow-x: hidden; font-size: 13px; margin-bottom: 10px; height: 370px; }
+#include-div h3 { font-size: 15px; background: url(../images/tag.jpg) no-repeat; height: 30px; width: 150px; text-align: center; color: white; line-height: 30px; margin-bottom: 20px; }
+#include-div .content p { text-indent: 2em; }
+.news-content { background: url(../images/sidemenu-bg.png); padding: 15px 10px 10px 10px; }
+.news-content .title { text-align: center; font-size: 16px; border-bottom: 1px dotted gray; }
+.news-content .publish_time { text-align: right; padding-right: 10px; color: rgb(100, 100, 100); font-size: 12px; }
+.detail p { text-indent: 2em; margin-bottom: 10px; }
+.file-list { background: rgb(245, 245, 240); padding: 5px 10px; }
+.file-list p { color: green; margin-bottom: 5px; }
+.file-list ul { margin-left: 20px; list-style: none; }
+.file-list li { list-style: none; padding-left: 20px; background: url(../images/icon-line.png) no-repeat 0 center; }
+.file-list li.xls, .file-list li.xlsm, .file-list li.xlsx { background: url(../images/xls.png) no-repeat 0 center; }
+.file-list li.pdf { background: url(../images/pdf.png) no-repeat 0 center; }
+.file-list li.doc, .file-list li.docx { background: url(../images/doc.png) no-repeat 0 center; }
+.file-list li.ppt, .file-list li.pptx { background: url(../images/ppt.png) no-repeat 0 center; }
+.file-list li.mp3, .file-list li.wpm { background: url(../images/audio.png) no-repeat 0 center; }
+.file-list li.mp4, .file-list li.rmvb, .file-list li.avi { background: url(../images/video.png) no-repeat 0 center; }
+.file-list li.jar, .file-list li.rar, .file-list li.zip, .file-list li.tar { background: url(../images/rar.png) no-repeat 0 center; }
+
+#pro-test ul { margin-left: 20px; list-style: none; }
+#pro-test ul li { background: url(../images/icon-line.png) no-repeat 2px center; padding-left: 20px; }
+#pro-test ul a { color: blue; }
+
+#include-div-second {  }
+#include-div-second h4, #include-div h4 { font-size: 14px; padding-left: 20px; background: url(../images/icon-title.jpg) no-repeat 2px center; height: 20px; line-height: 20px; }
+.course-list { font-size: 14px; border: 1px dotted gray; padding: 5px 10px; }
+.course-list a { color: blue; margin-left: 20px; }
+#include-div-second { background: rgb(245, 245, 240); padding: 5px 10px; }
+#include-div-second p { color: green; margin-bottom: 5px; }
+#include-div-second ul { margin-left: 20px; list-style: none; }
+#include-div-second li { list-style: none; padding-left: 20px; background: url(../images/icon-line.png) no-repeat 0 center; }
+#include-div-second li.xls, #include-div-second li.xlsm, #include-div-second li.xlsx { background: url(../images/xls.png) no-repeat 0 center; }
+#include-div-second li.pdf { background: url(../images/pdf.png) no-repeat 0 center; }
+#include-div-second li.doc, #include-div-second li.docx { background: url(../images/doc.png) no-repeat 0 center; }
+#include-div-second li.ppt, #include-div-second li.pptx { background: url(../images/ppt.png) no-repeat 0 center; }
+#include-div-second li.mp3, #include-div-second li.wpm { background: url(../images/audio.png) no-repeat 0 center; }
+#include-div-second li.mp4, #include-div-second li.rmvb, #include-div-second li.avi { background: url(../images/video.png) no-repeat 0 center; }
+#include-div-second li.jar, #include-div-second li.rar, #include-div-second li.zip, #include-div-second li.tar { background: url(../images/rar.png) no-repeat 0 center; }
+
+#test_option { padding: 5px 10px; border: 1px dotted gray; }
+#test_option ul { margin-left: 10px; }
+#test_option li { list-style: none; }

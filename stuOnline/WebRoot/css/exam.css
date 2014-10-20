@@ -1,0 +1,10 @@
+.subjects-type { padding-left: 20px; background: url(../images/icon-title.jpg) no-repeat 2px center; font-size: 15px; border-bottom: 1px dotted gray; line-height: 25px; margin: 10px auto 3px auto; }
+.subjects-list { font-size: 13px; }
+.subjects-list ul { list-style: none; }
+.subject-content p { padding-left: 20px; background: url(../images/icon-line.png) no-repeat 2px center;}
+.subjects-list li { display: inline-block; margin-left: 10px; padding-left: 20px; background: url(../images/icon-line.png) no-repeat 2px center; }
+a { color: blue; }
+.right-answer p { margin-left: 109px; margin-top: -21px; font-weight: bold; }
+.answer-div, .score-div, .evaluate-div { border: 1px dotted gray; margin: 5px; padding:5px 10px; }
+.answer-div label, .score-div label, .evaluate-div label { text-align: left !important; margin-left: -5px; }
+.evaluate-div textarea { margin-top: 0; margin-left: 104px;}

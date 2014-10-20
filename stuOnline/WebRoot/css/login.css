@@ -1,0 +1,77 @@
+#bg {  
+        background: url(../images/bg2.jpg) repeat ;
+//background: #32b4e4 repeat;
+font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "Î¢ÈíÑÅºÚ", Tahoma, Arial, STHeiti, sans-serif;
+  _font-family: Tahoma, Arial, Helvetica, STHeiti, sans-serif;
+}
+#main{ 
+    background: url(../images/login.jpg); 
+    height: 450px; 
+    width: 600px; 
+    margin: 0 auto; 
+	margin-top: 120px;
+    border-radius: 5px 5px; 
+    box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.3), 2px -2px 2px rgba(0, 0, 0, 0.3); ; 
+}
+#belt{ 
+    background: url(../images/belt.jpg) repeat; 
+    margin: 0 auto; 
+	margin-top: 120px;
+    //border-radius: 5px 5px; 
+    //box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.3), 2px -2px 2px rgba(0, 0, 0, 0.3); ; 
+}
+#login{
+	width: 250px;
+	height: 200px;
+	padding-top:120px;
+	margin-left: 340px;
+	margin-top: 15px;
+	float: right;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+#login label {
+	width: 65px;
+	text-align: left;
+	display: inline-block;
+	font-size: 14px;
+}
+#login a {
+	font-size: 12px;
+	color: blue;
+}
+#login .button {
+	width: 70px;
+}
+#login ul li {
+    list-style: none;
+    width: 100%;
+    height: 30px;
+   	line-height: 30px;
+             text-align: left;
+}
+#login .prompt {
+	font-size: 12px;
+	margin-top: 15px;
+}
+#wheel{
+	margin-top: 20px;
+	margin-bottom: 0px;
+	width: 100%;
+    height: 100px;
+}
+#wheel img { 
+	text-align: left;
+	display: inline-block;
+}
+#foot {
+    width: 100%;
+    height: 80px;
+    //box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.3);
+	margin-bottom:0px;
+	text-align:center;
+}
+.login-info {
+	color: red;
+	font-size: 12px;
+}

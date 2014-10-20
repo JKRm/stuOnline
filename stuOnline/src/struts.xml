@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!--<include file="struts-default.xml"/> -->
+	<constant name="struts.multipart.saveDir" value="C:/temp" />
+	<constant name="struts.multipart.maxSize" value="300000000" />
+
+	<package name="Resource" extends="struts-default" namespace="/resource">
+		<action name="getResourceList" class="com.shanda.linglong.action.ResourceAction"
+			method="execute">
+			<result name="success">/CourseResource/getList.jsp</result>
+		</action>
+		<action name="delete" class="com.shanda.linglong.action.ResourceAction"
+			method="delete">
+			<result name="success" type="chain">
+				<param name="actionName">getResourceList</param>
+				<param name="namespace">/resource</param>
+			</result>			<result name="error">/News/error.jsp</result>
+		</action>
+	</package>
+
+	<package name="upload" extends="struts-default" namespace="/upload">
+		<action name="fileUploadAction" class="com.shanda.linglong.action.FileUploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">200000000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success" type="redirectAction">
+				<param name="actionName">getResourceList</param>
+				<param name="namespace">/resource</param>
+			</result>
+			<result name="input">/manage/admin/pages/upload.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+		<action name="initSel" class="com.shanda.linglong.action.FileUploadAction"
+			method="initSelect">
+			<result name="success">/CourseResource/Upload.jsp</result>
+
+		</action>
+	</package>
+
+	<package name="EnterpriseNews" extends="struts-default"
+		namespace="/news">
+		<action name="AddNews" class="com.shanda.linglong.action.NewsAction"
+			method="add">
+			<param name="savePath">/newsAppendix</param>
+			<result name="addSuccess">/News/success.jsp</result>
+			<result name="addError">/News/error.jsp</result>
+			<result name="input">/News/add.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">200000000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<action name="get" class="com.shanda.linglong.action.NewsAction"
+			method="get">
+			<result name="success">/News/notice.jsp</result>
+			<result name="download">/Downloads/enDownload.jsp</result>
+		</action>
+		<action name="read" class="com.shanda.linglong.action.NewsAction"
+			method="read">
+			<result name="success">/News/news.jsp</result>
+			<result name="download">/Downloads/download.jsp</result>
+		</action>
+		<action name="edit" class="com.shanda.linglong.action.NewsAction"
+			method="edit">
+			<result name="success">/News/edit.jsp</result>
+			<result name="download">/Downloads/edit.jsp</result>
+		</action>
+		<action name="save" class="com.shanda.linglong.action.NewsAction"
+			method="save">
+			<param name="savePath">/newsAppendix</param>
+			<result name="success">/News/success.jsp</result>
+			<result name="error">/News/error.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">200000000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		<action name="getList" class="com.shanda.linglong.action.NewsAction"
+			method="getList">
+			<result name="success">/News/notices.jsp</result>
+		</action>
+		
+		<action name="getDownload" class="com.shanda.linglong.action.NewsAction"
+			method="getDownload">
+			<result name="success">/Downloads/downloads.jsp</result>
+		</action>
+		<action name="getEnDownload" class="com.shanda.linglong.action.NewsAction"
+			method="getEnDownload">
+			<result name="success">/Downloads/enDownloads.jsp</result>
+		</action>
+		
+		<action name="getNotices" class="com.shanda.linglong.action.NewsAction"
+			method="getNewss">
+			<result name="success">/News/newss.jsp</result>
+		</action>
+		<action name="delAppendix" class="com.shanda.linglong.action.NewsAction"
+			method="delAppendix">
+			<param name="savePath">/newsAppendix</param>
+			<result name="success">/News/success.jsp</result>
+		</action>
+		<action name="deleteNews" class="com.shanda.linglong.action.NewsAction"
+			method="delete">
+			<param name="savePath">/newsAppendix</param>
+			<result name="success">/News/success.jsp</result>
+		</action>
+	</package>
+
+
+
+	<package name="Mail" extends="struts-default" namespace="/mail">
+		<action name="sendMail" class="com.shanda.linglong.action.MailAction"
+			method="doSave">
+			<result name="success">/News/success.jsp</result>
+			<result name="error">/News/error.jsp</result>
+			<result name="input">/mail/mail.jsp</result>
+		</action>
+
+		<action name="initSel" class="com.shanda.linglong.action.MailAction"
+			method="initSel">
+			<result name="success">/mail/mail.jsp</result>
+		</action>
+	</package>
+
+	<package name="community" extends="struts-default" namespace="/community">
+		<action name="getStatusList" class="com.shanda.linglong.action.CommunityAction"
+			method="getAll">
+			<result name="success">/enCommunity/comMain.jsp</result>
+		</action>
+		<action name="homeDes" class="com.shanda.linglong.action.CommunityAction"
+			method="searchInfo">
+			<result name="success">/enCommunity/homeDes.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+		<action name="publish" class="com.shanda.linglong.action.CommunityAction"
+			method="publish">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getStatusList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="publishdoc" class="com.shanda.linglong.action.CommunityAction"
+			method="publishDoc">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getStatusList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+
+		<action name="delRecord" class="com.shanda.linglong.action.CommunityAction"
+			method="delRecord">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getStatusList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="disList" class="com.shanda.linglong.action.CommunityAction"
+			method="discuss">
+			<result name="success">/enCommunity/Discuss.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="addDis" class="com.shanda.linglong.action.CommunityAction"
+			method="addDis">
+			<result name="success" type="chain">
+				<param name="actionName">disList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="resList" class="com.shanda.linglong.action.CommunityAction"
+			method="discuss">
+			<result name="success">/enCommunity/Resend.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="addRes" class="com.shanda.linglong.action.CommunityAction"
+			method="addRes">
+			<result name="success" type="chain">
+				<param name="actionName">disList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="delDis" class="com.shanda.linglong.action.CommunityAction"
+			method="delDiscuss">
+			<result name="success" type="chain">
+				<param name="actionName">disList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="addRpeat" class="com.shanda.linglong.action.CommunityAction"
+			method="addMessage">
+			<result name="success" type="chain">
+				<param name="actionName">disList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="MessageList" class="com.shanda.linglong.action.CommunityAction"
+			method="getMessageList">
+			<result name="success">/enCommunity/messageAlert.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="delMessage" class="com.shanda.linglong.action.CommunityAction"
+			method="delMessage">
+			<result name="success" type="chain">
+				<param name="actionName">MessageList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="delAllMessage" class="com.shanda.linglong.action.CommunityAction"
+			method="delAllMessage">
+			<result name="success" type="chain">
+				<param name="actionName">getStatusList</param>
+				<param name="namespace">/community</param>
+			</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="personSearch" class="com.shanda.linglong.action.CommunityAction"
+			method="personSearch">
+			<result name="success">/enCommunity/personList.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="personDetail" class="com.shanda.linglong.action.CommunityAction"
+			method="personInfo">
+			<result name="success">/enCommunity/personDetail.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+		<action name="saveDetail" class="com.shanda.linglong.action.CommunityAction"
+			method="saveInfo">
+			<result name="success">/enCommunity/success.jsp</result>
+			<result name="error">/News/error.jsp</result>
+		</action>
+
+	</package>
+	<package name="login" extends="struts-default" namespace="/login">
+
+
+		<action name="login" class="com.shanda.linglong.action.LoginAction">
+			<result name="success">/home/Home.jsp</result>
+			<result name="admin" type="chain">
+				<param name="namespace">/login</param>
+				<param name="actionName">admin</param>
+			</result>
+			<result name="error">/login/login.jsp</result>
+			<result name="input">/login/login.jsp</result>
+		</action>
+
+		<action name="exit" class="com.shanda.linglong.action.LoginAction"
+			method="exit">
+
+			<result name="success">/login/login.jsp</result>
+		</action>
+
+		<action name="admin" class="com.shanda.linglong.action.LoginAction"
+			method="admin">
+			<result name="success">/home/Dede.jsp
+	</result>
+			<result name="error">/error.jsp</result>
+		</action>
+         
+         <action name="changePassword" class="com.shanda.linglong.action.LoginAction"
+			method="changePassword">
+
+			<result name="success">/login/Success.jsp</result>
+		</action>
+		 <action name="sendEmail" class="com.shanda.linglong.action.SendEmail"
+			method="sendEmail">
+
+			<result name="success">/login/Success.jsp</result>
+		</action>
+	</package>
+
+
+	<package name="permission" extends="struts-default" namespace="/permission">
+
+
+		<action name="save" class="com.shanda.linglong.action.PermissionAction">
+			<result name="success">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="delete" class="com.shanda.linglong.action.PermissionAction"
+			method="delete">
+			<result name="success">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="update" class="com.shanda.linglong.action.PermissionAction"
+			method="update">
+			<result name="success">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+
+		<action name="results" class="com.shanda.linglong.action.PermissionAction"
+			method="results">
+			<result name="success">/permission/Permission.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="select" class="com.shanda.linglong.action.PermissionAction"
+			method="select">
+			<result name="success">/permission/Permission.jsp</result>
+			<result name="error">Login.jsp</result>
+
+		</action>
+		<action name="save_permission" class="com.shanda.linglong.action.PermissionAction"
+			method="save_permission">
+			<result name="success">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+
+		<action name="cxqxzl" class="com.shanda.linglong.action.PermissionAction"
+			method="cxqxzl">
+			<result name="success">/permission/Permission.jsp</result>
+		</action>
+			<action name="fp_sj" class="com.shanda.linglong.action.PermissionAction" method="fp_sj">
+			<result name="success">/permission/Exam_fp.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="select_fpsj" class="com.shanda.linglong.action.PermissionAction" method="select_fpsj">
+			<result name="success">/permission/Exam_fp.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="save_sj" class="com.shanda.linglong.action.PermissionAction" method="save_sj">
+			<result name="success">/permission/index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="cpb" class="com.shanda.linglong.action.PermissionAction" method="cpb">
+			<result name="success">/permission/Cp_fp.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="select_cpb" class="com.shanda.linglong.action.PermissionAction" method="select_cpb">
+			<result name="success">/permission/Cp_fp.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="save_cpb" class="com.shanda.linglong.action.PermissionAction" method="save_cpb">
+			<result name="success">/permission/index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="pxfp" class="com.shanda.linglong.action.PermissionAction" method="pxfp">
+			<result name="success">/permission/Pxfp.jsp</result>
+			<result name="delete">/permission/delete_px.jsp</result>
+		</action>
+		
+		<action name="select_pxfp" class="com.shanda.linglong.action.PermissionAction" method="select_pxfp">
+			<result name="success">/permission/Pxfp.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="save_pxfp" class="com.shanda.linglong.action.PermissionAction" method="save_pxfp">
+			<result name="success">/permission/index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="select_pxfp_train" class="com.shanda.linglong.action.PermissionAction" method="select_pxfp_train">
+			<result name="success">/permission/delete_px.jsp</result>
+			<result name="error">/permission/error.jsp</result>
+		</action>
+		<action name="delete_pxfp" class="com.shanda.linglong.action.PermissionAction" method="delete_pxfp">
+			<result name="success">/permission/index.jsp</result>
+			<result name="error">/permission/error.jsp</result>
+		</action>
+		<action name="to_delete" class="com.shanda.linglong.action.PermissionAction" method="to_delete">
+			<result name="success">/permission/delete_p.jsp</result>
+			<result name="error">/permission/error.jsp</result>
+		</action>
+		<action name="select_xtqx_delete" class="com.shanda.linglong.action.PermissionAction" method="select_xtqx_delete">
+			<result name="success">/permission/delete_p.jsp</result>
+			<result name="error">/permission/error.jsp</result>
+		</action>
+		<action name="delete_xtqx" class="com.shanda.linglong.action.PermissionAction" method="delete_xtqx">
+			<result name="success">/permission/index.jsp</result>
+			<result name="error">/permission/error.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="CourseDesign" extends="struts-default"
+		namespace="/design">
+		<action name="getTrain" class="com.shanda.linglong.action.CourseDesignAction"
+			method="Gettrain">
+			<result name="point">/courseDesign/pointMotify.jsp</result>
+			<result name="bar">/courseDesign/barMotify.jsp</result>
+			<result name="unit">/courseDesign/unitMotify.jsp</result>
+			<result name="lesson">/courseDesign/lessonMotify.jsp</result>
+			<result name="train">/courseDesign/trainMotify.jsp</result>
+			<result name="detail">/courseDesign/trainDetail.jsp</result>
+		</action>
+
+		<action name="Json4lesson" class="com.shanda.linglong.action.CourseDesignAction"
+			method="Json4lesson">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="Json4unit" class="com.shanda.linglong.action.CourseDesignAction"
+			method="Json4unit">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="Json4bar" class="com.shanda.linglong.action.CourseDesignAction"
+			method="Json4bar">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="Json4point" class="com.shanda.linglong.action.CourseDesignAction"
+			method="Json4point">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="delCourse" class="com.shanda.linglong.action.CourseDesignAction"
+			method="delCourse">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="addCourse" class="com.shanda.linglong.action.CourseDesignAction"
+			method="addCourse">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="updateCourse" class="com.shanda.linglong.action.CourseDesignAction"
+			method="updateCourse">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="CourseList" class="com.shanda.linglong.action.CourseDesignAction"
+			method="courseList">
+			<result name="success">/courseDesign/CourseList.jsp</result>
+			<result name="point" type="redirectAction">
+				<param name="actionName">showRes</param>
+				<param name="namespace">/design</param>
+			</result>
+		</action>
+
+		<action name="showRes" class="com.shanda.linglong.action.CourseDesignAction"
+			method="resourcePage">
+			<result name="success">/courseDesign/getResourceList.jsp</result>
+		</action>
+
+		<action name="trainDetail" class="com.shanda.linglong.action.CourseDesignAction"
+			method="saveTrainDetail">
+			<result name="success">/courseDesign/success.jsp</result>
+		</action>
+
+
+
+	</package>
+
+	<package name="UploadTest" extends="struts-default" namespace="/uploadTest">
+		<action name="uploadTestAction" class="com.shanda.linglong.action.UploadTestAction"
+			method="execute">
+			<result name="success">/Test/Test_questionUpload.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+		<action name="uploadTest_optionAction"
+			class="com.shanda.linglong.action.UploadTest_optionAction" method="execute">
+			<result name="success">/Test/Test_questionUpload.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+		<action name="finshAction"
+			class="com.shanda.linglong.action.UploadTest_optionAction" method="execute">
+			<result name="success">/index.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+		<action name="updateTestAction" class="com.shanda.linglong.action.UploadTestAction"
+			method="updateTest">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="updateTest_questionAction"
+			class="com.shanda.linglong.action.UploadTest_optionAction" method="updateTest_question">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="PreviewTest" extends="struts-default" namespace="/previewTest">
+		<action name="previewTestAction" class="com.shanda.linglong.action.PreviewTestAction"
+			method="execute">
+			<result name="success">/Test/PreviewTest.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+
+		<action name="TestListAction" class="com.shanda.linglong.action.PreviewTestAction"
+			method="listTest">
+			<result name="success">/Test/TestList.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+
+		<action name="Test_questionListAction" class="com.shanda.linglong.action.PreviewTestAction"
+			method="listTest_question">
+			<result name="success">/Test/PreviewTest_question.jsp</result>
+			<result name="error">/Test/OverTest.jsp</result>
+		</action>
+	</package>
+
+	<package name="AnswerTest" extends="struts-default" namespace="/answerTest">
+
+		<action name="AnswerTestListAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="listTest">
+			<result name="success">/Test/AnswerTestList.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+
+		<action name="answerTestAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="execute">
+			<result name="success">/Test/AnswerTest.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+
+		<action name="answerTest_questionAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="Test_question">
+			<result name="success">/Test/AnswerTest_question.jsp</result>
+			<result name="error">/Test/OverTest.jsp</result>
+		</action>
+
+		<action name="answerTest_questionListAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="listTest_question">
+			<result name="success">/Test/AnswerTest_question.jsp</result>
+			<result name="error">/Test/OverTest.jsp</result>
+		</action>
+
+		<action name="test_answerListAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="test_answerList">
+			<result name="success">/Test/PersonTest.jsp</result>
+			<result name="error">/Test/OverTest.jsp</result>
+		</action>
+
+		<action name="searchAnalyseAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="searchAnalyse">
+			<result name="success">/Test/SerchAnalyse.jsp</result>
+			<result name="error">/Test/OverTest.jsp</result>
+		</action>
+
+		<action name="gradeTestAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="personList">
+			<result name="success">/Test/PersonGradeList.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+
+		<action name="evaluateTestAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="personTestList">
+			<result name="success">/Test/EvaluateTestList.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+
+		<action name="insertTestAction" class="com.shanda.linglong.action.AnswerTestAction"
+			method="evaluateTest">
+			<result name="success">/Test/InsertTestSuccess.jsp</result>
+			<result name="error">/Test/error.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="Exam" extends="struts-default" namespace="/exam">
+
+		<action name="ExamAction" class="com.shanda.linglong.action.ExamUploadAction"
+			method="execute">
+			<result name="success">/Exam/ExamUpload.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="ExamAddAction" class="com.shanda.linglong.action.ExamUploadAction"
+			method="getList">
+			<result name="success">/Exam/ExamUpload.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="Exam_prouceAction" class="com.shanda.linglong.action.Exam_produceAction"
+			method="execute">
+			<result name="success">/Exam/ExamProduceLv2.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="Exam_prouceMun1Action" class="com.shanda.linglong.action.Exam_produceAction"
+			method="munexe">
+			<result name="success">/Exam/ExamProduceMUNLv2.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="Exam_prouceAddAction" class="com.shanda.linglong.action.Exam_produceAction"
+			method="getList">
+			<result name="success">/Exam/ExamProduce.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="MunInsertAction" class="com.shanda.linglong.action.Exam_produceAction"
+			method="insertTem">
+			<result name="success">/index.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="Exam_prouceMunAction" class="com.shanda.linglong.action.Exam_produceAction"
+			method="getList">
+			<result name="success">/Exam/ExamMunProduce.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="Exam_prouceLv3AddAction" class="com.shanda.linglong.action.Exam_produceLv3Action"
+			method="execute">
+			<result name="success">/Exam/ExamProduceLv2.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="AnswerExamAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="getList">
+			<result name="success">/Exam/ExamList.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="AnswerExamShowAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="getList">
+			<result name="success">/Exam/ShowList.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="AnswerExamExAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="execute">
+			<result name="success">/Exam/ShowExam.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="GradeExamAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="grade">
+			<result name="success">/Exam/GradeExamList.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="analyAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="analy">
+			<result name="success">/Exam/GradeList.jsp</result>
+			<result name="error">/Exam/ExamAOver.jsp</result>
+		</action>
+
+		<action name="submAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="subm">
+			<result name="success">/Exam/GradeSuccess.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="PersonListAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="examPersonList">
+			<result name="success">/Exam/PersonExamList.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="AnswerExamTestAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="examAnswerList">
+			<result name="success">/Exam/ShowExamList.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="AnswerAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="insertAnswer">
+			<result name="success">/Exam/ExamSuccess.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="showAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="exam">
+			<result name="success">/Exam/ShowExamTest.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+		
+		<action name="showAnalyAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="personAnaly">
+			<result name="success">/Exam/ShowAnalyList.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="finshowAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="finshow">
+			<result name="success">/index.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+
+		<action name="showAnalysePersonAction" class="com.shanda.linglong.action.AnswerExamAction"
+			method="showAnalysePerson">
+			<result name="success">/Exam/ExamPersonAnalyse.jsp</result>
+			<result name="error">/Exam/error.jsp</result>
+		</action>
+	</package>
+</struts>    
